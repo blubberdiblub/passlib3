@@ -1,0 +1,44 @@
+[build-system]
+requires = ["packaging"]
+build-backend = "do"
+backend-path = ["."]
+
+[project]
+name = "passlib3"
+dynamic = ["version"]
+description = "drop-in replacement for passlib package"
+requires-python = ">= 3.11"
+license = "MIT"
+
+[[project.authors]]
+name = "Niels Boehm"
+email = "blubberdiblub@gmail.com"
+
+[project.readme]
+content-type = "text/markdown; variant=gfm"
+text = '''
+passlib3
+--------
+'''
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "glibc_limitation: mark parameter set as affected by glibc limitations",
+]
+
+[tool.black]
+target-version = ["py312"]
+line-length = 100
+skip-string-normalization = true
+preview = true
+
+[tool.isort]
+py_version = 312
+skip_gitignore = true
+atomic = true
+profile = "black"
+line_length = 100
+lines_between_types = 1
+combine_as_imports = true
+src_paths = ["src", "tests"]
